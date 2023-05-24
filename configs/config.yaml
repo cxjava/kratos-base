@@ -1,0 +1,19 @@
+server:
+  auth:
+    issuer: ""
+    audience: ""
+    jwk: ""
+  http:
+    addr: "${HTTP_ADDR:0.0.0.0:8000}"
+    timeout: 1s
+  grpc:
+    addr: "${GRPC_ADDR:0.0.0.0:9000}"
+    timeout: 1s
+data:
+  database:
+    driver: postgres
+    source: "${DB_SOURCE:host=localhost port=25432 user=local dbname=kratos password=local sslmode=disable}"
+  redis:
+    addr: 127.0.0.1:6379
+    read_timeout: 0.2s
+    write_timeout: 0.2s

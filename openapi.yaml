@@ -1,0 +1,169 @@
+# Generated with protoc-gen-openapi
+# https://github.com/google/gnostic/tree/master/cmd/protoc-gen-openapi
+
+openapi: 3.0.3
+info:
+    title: User API
+    description: The User service definition.
+    version: 0.0.1
+paths:
+    /v1/user:
+        post:
+            tags:
+                - User
+            description: 创建User
+            operationId: User_CreateUser
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/user.v1.UserCreateReq'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/user.v1.UserCreateReply'
+    /v1/user/{id}:
+        get:
+            tags:
+                - User
+            description: 获取User
+            operationId: User_GetUser
+            parameters:
+                - name: id
+                  in: path
+                  required: true
+                  schema:
+                    type: integer
+                    format: int64
+                - name: age
+                  in: query
+                  description: 年龄
+                  schema:
+                    type: integer
+                    format: int32
+                - name: name
+                  in: query
+                  description: 姓名
+                  schema:
+                    type: string
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/user.v1.UserReply'
+        put:
+            tags:
+                - User
+            description: 更新User
+            operationId: User_UpdateUser
+            parameters:
+                - name: id
+                  in: path
+                  required: true
+                  schema:
+                    type: integer
+                    format: int64
+            requestBody:
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/user.v1.UserUpdateReq'
+                required: true
+            responses:
+                "200":
+                    description: OK
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/user.v1.UserUpdateReply'
+components:
+    schemas:
+        user.v1.UserCreateReply:
+            type: object
+            properties:
+                code:
+                    type: integer
+                    description: 返回码
+                    format: int32
+                message:
+                    type: string
+                    description: 消息
+                result:
+                    $ref: '#/components/schemas/user.v1.UserData'
+            description: 创建User返回
+        user.v1.UserCreateReq:
+            type: object
+            properties:
+                id:
+                    type: integer
+                    format: int64
+                age:
+                    type: integer
+                    description: 年龄
+                    format: int32
+                name:
+                    type: string
+                    description: 姓名
+            description: 创建User请求
+        user.v1.UserData:
+            type: object
+            properties:
+                id:
+                    type: integer
+                    format: int64
+                age:
+                    type: integer
+                    description: 年龄
+                    format: int32
+                name:
+                    type: string
+                    description: 姓名
+            description: 实体数据
+        user.v1.UserReply:
+            type: object
+            properties:
+                code:
+                    type: integer
+                    description: 返回码
+                    format: int32
+                message:
+                    type: string
+                    description: 消息
+                result:
+                    $ref: '#/components/schemas/user.v1.UserData'
+            description: 查询返回
+        user.v1.UserUpdateReply:
+            type: object
+            properties:
+                code:
+                    type: integer
+                    description: 返回码
+                    format: int32
+                message:
+                    type: string
+                    description: 消息
+                result:
+                    $ref: '#/components/schemas/user.v1.UserData'
+            description: 更新User返回
+        user.v1.UserUpdateReq:
+            type: object
+            properties:
+                id:
+                    type: integer
+                    format: int64
+                age:
+                    type: integer
+                    description: 年龄
+                    format: int32
+                name:
+                    type: string
+                    description: 姓名
+            description: 更新User请求
+tags:
+    - name: User
