@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package catalog.service.v1;
+
+import "google/api/annotations.proto";
+
+option go_package = "api/catalog/service/v1;v1";
+
+
+service Catalog {
+   
+    rpc CreateBeer (CreateBeerReq) returns (CreateBeerReply) {
+    }
+
+    rpc GetBeer (GetBeerReq) returns (GetBeerReply) {
+    }
+}
+
+message CreateBeerReq {
+    string name = 1;
+}
+
+message CreateBeerReply {
+    int64 id = 1;
+    string name = 2;
+}
+
+message GetBeerReq {
+    int64 id = 1;
+}
+
+message GetBeerReply {
+    int64 id = 1;
+    string name = 2;
+}

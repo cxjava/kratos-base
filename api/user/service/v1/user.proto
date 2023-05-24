@@ -1,0 +1,120 @@
+syntax = "proto3";
+package user.v1;
+
+import "google/api/annotations.proto";
+import "google/protobuf/duration.proto";
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/descriptor.proto";
+import "validate/validate.proto";
+
+
+option go_package = "kratos-base/api/user/v1;v1";
+
+// The User service definition.
+service User {
+
+  // 获取User
+  rpc GetUser (UserReq) returns (UserReply)  {
+    option (google.api.http) = {
+      get: "/v1/user/{id}"
+    };
+  }
+
+  // 更新User
+  rpc UpdateUser (UserUpdateReq) returns (UserUpdateReply)  {
+    option (google.api.http) = {
+      put: "/v1/user/{id}"
+      body: "*"
+    };
+  }
+
+  // 创建User
+  rpc CreateUser (UserCreateReq) returns (UserCreateReply)  {
+    option (google.api.http) = {
+      post: "/v1/user"
+      body: "*"
+    };
+  }
+
+}
+
+
+enum Method {
+  METHOD_UNSET = 0;
+  METHOD_PASSWORD = 1;
+  METHOD_CODE = 2;
+}
+
+// 实体数据
+message UserData {
+    //
+    int64 id = 1;
+    //年龄
+    int32 age = 2 [(validate.rules).int32.lt = 50];
+    //姓名
+    string name = 3 [(validate.rules).string.len = 5];
+
+}
+
+
+// 查询搜索请求
+message UserReq {
+    //
+    int64 id = 1;
+    //年龄
+    int32 age = 2;
+    //姓名
+    string name = 3;
+
+}
+
+// 查询返回
+message UserReply {
+    // 返回码
+    int32 code = 1;
+    // 消息
+    string message = 2;
+    // 结果数据
+    UserData result = 3;
+}
+
+// 创建User请求
+message UserCreateReq {
+    //
+    int64 id = 1;
+    //年龄
+    int32 age = 2 [(validate.rules).int32.lt = 50];
+    //姓名
+    string name = 3 [(validate.rules).string.len = 5];
+}
+
+// 创建User返回
+message UserCreateReply {
+    // 返回码
+    int32 code = 1;
+    // 消息
+    string message = 2;
+    // 结果数据
+    UserData result = 3;
+}
+
+// 更新User请求
+message UserUpdateReq {
+    //
+    int64 id = 1;
+    //年龄
+    int32 age = 2;
+    //姓名
+    string name = 3;
+
+}
+
+// 更新User返回
+message UserUpdateReply {
+    // 返回码
+    int32 code = 1;
+    // 消息
+    string message = 2;
+    // 结果数据
+    UserData result = 3;
+}

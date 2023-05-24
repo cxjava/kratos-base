@@ -1,0 +1,275 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "v1/user.proto",
+    "version": "version not set"
+  },
+  "tags": [
+    {
+      "name": "User"
+    }
+  ],
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/v1/user": {
+      "post": {
+        "summary": "创建User",
+        "operationId": "User_CreateUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1UserCreateReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1UserCreateReq"
+            }
+          }
+        ],
+        "tags": [
+          "User"
+        ]
+      }
+    },
+    "/v1/user/{id}": {
+      "get": {
+        "summary": "获取User",
+        "operationId": "User_GetUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1UserReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "age",
+            "description": "年龄",
+            "in": "query",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          },
+          {
+            "name": "name",
+            "description": "姓名",
+            "in": "query",
+            "required": false,
+            "type": "string"
+          }
+        ],
+        "tags": [
+          "User"
+        ]
+      },
+      "put": {
+        "summary": "更新User",
+        "operationId": "User_UpdateUser",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1UserUpdateReply"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "format": "int64"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "age": {
+                  "type": "integer",
+                  "format": "int32",
+                  "title": "年龄"
+                },
+                "name": {
+                  "type": "string",
+                  "title": "姓名"
+                }
+              },
+              "title": "更新User请求"
+            }
+          }
+        ],
+        "tags": [
+          "User"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "@type": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": {}
+    },
+    "rpcStatus": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "v1UserCreateReply": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "返回码"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "result": {
+          "$ref": "#/definitions/v1UserData",
+          "title": "结果数据"
+        }
+      },
+      "title": "创建User返回"
+    },
+    "v1UserCreateReq": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "age": {
+          "type": "integer",
+          "format": "int32",
+          "title": "年龄"
+        },
+        "name": {
+          "type": "string",
+          "title": "姓名"
+        }
+      },
+      "title": "创建User请求"
+    },
+    "v1UserData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "format": "int64"
+        },
+        "age": {
+          "type": "integer",
+          "format": "int32",
+          "title": "年龄"
+        },
+        "name": {
+          "type": "string",
+          "title": "姓名"
+        }
+      },
+      "title": "实体数据"
+    },
+    "v1UserReply": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "返回码"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "result": {
+          "$ref": "#/definitions/v1UserData",
+          "title": "结果数据"
+        }
+      },
+      "title": "查询返回"
+    },
+    "v1UserUpdateReply": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "integer",
+          "format": "int32",
+          "title": "返回码"
+        },
+        "message": {
+          "type": "string",
+          "title": "消息"
+        },
+        "result": {
+          "$ref": "#/definitions/v1UserData",
+          "title": "结果数据"
+        }
+      },
+      "title": "更新User返回"
+    }
+  }
+}

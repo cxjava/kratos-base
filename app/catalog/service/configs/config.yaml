@@ -1,0 +1,13 @@
+trace:
+  endpoint: http://127.0.0.1:14268/api/traces
+server:
+  http:
+    addr: "${HTTP_ADDR:127.0.0.1:5000}"
+    timeout: 1s
+  grpc:
+    addr: "${GRPC_ADDR:127.0.0.1:5001}"
+    timeout: 1s
+data:
+  database:
+    driver: postgres
+    source: "${DB_SOURCE:host=localhost port=25432 user=local dbname=kratos password=local sslmode=disable}"
