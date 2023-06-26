@@ -8,8 +8,8 @@ import (
 	"kratos-base/internal/service"
 
 	"github.com/golang/mock/gomock"
-	. "github.com/onsi/ginkgo"
-	. "github.com/onsi/gomega"
+	. "github.com/onsi/ginkgo/v2"
+    . "github.com/onsi/gomega"
 )
 
 var _ = Describe("UserUsecase", func() {
