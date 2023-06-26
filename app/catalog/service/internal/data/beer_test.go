@@ -5,7 +5,7 @@ import (
 	"kratos-base/app/catalog/service/internal/data"
 
 	"github.com/go-kratos/kratos/v2/log"
-	. "github.com/onsi/ginkgo"
+	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
 )
 
