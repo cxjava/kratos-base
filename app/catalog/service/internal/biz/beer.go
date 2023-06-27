@@ -30,7 +30,7 @@ type BeerUseCase struct {
 	sg        singleflight.Group
 }
 
-func NewBeerUseCase(repo BeerRepo, logger log.Logger) *BeerUseCase {
+func NewBeerUseCase(repo BeerRepo, logger log.Logger) CatalogUseCase {
 	return &BeerUseCase{repo: repo, log: log.NewHelper(log.With(logger, "module", "usecase/beer")), pageToken: page_token.NewTokenGenerate()}
 }
 

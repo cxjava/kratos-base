@@ -30,8 +30,8 @@ func initApp(confServer *conf.Server, confData *conf.Data, logger log.Logger, tr
 		return nil, nil, err
 	}
 	beerRepo := data.NewBeerRepo(dataData, logger)
-	beerUseCase := biz.NewBeerUseCase(beerRepo, logger)
-	catalogService := service.NewCatalogService(beerUseCase, logger)
+	catalogUseCase := biz.NewBeerUseCase(beerRepo, logger)
+	catalogService := service.NewCatalogService(catalogUseCase, logger)
 	grpcServer := server.NewGRPCServer(confServer, logger, tracerProvider, catalogService)
 	app := newApp(logger, grpcServer)
 	return app, func() {

@@ -3,7 +3,6 @@ package biz_test
 import (
 	"kratos-base/app/catalog/service/internal/biz"
 	"kratos-base/app/catalog/service/internal/mocks/mrepo"
-	"kratos-base/app/catalog/service/internal/service"
 
 	"github.com/golang/mock/gomock"
 	. "github.com/onsi/ginkgo/v2"
@@ -11,7 +10,7 @@ import (
 )
 
 var _ = Describe("CatalogUsecase", func() {
-	var userCase service.CatalogUseCase
+	var userCase biz.CatalogUseCase
 	var mUserRepo *mrepo.MockBeerRepo
 
 	BeforeEach(func() {
