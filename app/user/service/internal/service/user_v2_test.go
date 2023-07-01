@@ -11,8 +11,8 @@ import (
 	"kratos-base/app/user/service/internal/service"
 	"testing"
 
-	"github.com/golang/mock/gomock"
 	"github.com/stretchr/testify/require"
+	"go.uber.org/mock/gomock"
 )
 
 var (

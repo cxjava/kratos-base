@@ -4,9 +4,9 @@ import (
 	"kratos-base/app/catalog/service/internal/biz"
 	"kratos-base/app/catalog/service/internal/mocks/mrepo"
 
-	"github.com/golang/mock/gomock"
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
+	"go.uber.org/mock/gomock"
 )
 
 var _ = Describe("CatalogUsecase", func() {
@@ -23,7 +23,7 @@ var _ = Describe("CatalogUsecase", func() {
 			Name: "admin",
 		}
 		infoResp := &biz.Beer{
-			Id: 11,
+			Id:   11,
 			Name: "admin",
 		}
 		mUserRepo.EXPECT().CreateBeer(ctx, gomock.Any()).Return(infoResp, nil)

@@ -9,7 +9,6 @@ require (
 	github.com/go-kratos/kratos/v2 v2.6.2
 	github.com/go-kratos/swagger-api v1.0.1
 	github.com/golang-jwt/jwt/v4 v4.5.0
-	github.com/golang/mock v1.6.0
 	github.com/google/wire v0.5.0
 	github.com/lib/pq v1.10.9
 	github.com/onsi/ginkgo/v2 v2.11.0
@@ -21,6 +20,7 @@ require (
 	go.opentelemetry.io/otel/sdk v1.16.0
 	go.opentelemetry.io/otel/trace v1.16.0
 	go.uber.org/automaxprocs v1.5.2
+	go.uber.org/mock v0.1.0
 	golang.org/x/sync v0.3.0
 	google.golang.org/genproto/googleapis/api v0.0.0-20230530153820-e85fd2cbaebc
 	google.golang.org/grpc v1.56.1

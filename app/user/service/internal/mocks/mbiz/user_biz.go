@@ -10,7 +10,7 @@ import (
 	ent "kratos-base/app/user/service/internal/data/ent"
 	reflect "reflect"
 
-	gomock "github.com/golang/mock/gomock"
+	gomock "go.uber.org/mock/gomock"
 )
 
 // MockUserUseCase is a mock of UserUseCase interface.

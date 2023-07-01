@@ -9,7 +9,7 @@ import (
 	v1 "kratos-base/api/catalog/service/v1"
 	reflect "reflect"
 
-	gomock "github.com/golang/mock/gomock"
+	gomock "go.uber.org/mock/gomock"
 	grpc "google.golang.org/grpc"
 )
 

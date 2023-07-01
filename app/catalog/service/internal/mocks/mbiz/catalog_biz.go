@@ -9,7 +9,7 @@ import (
 	biz "kratos-base/app/catalog/service/internal/biz"
 	reflect "reflect"
 
-	gomock "github.com/golang/mock/gomock"
+	gomock "go.uber.org/mock/gomock"
 )
 
 // MockCatalogUseCase is a mock of CatalogUseCase interface.

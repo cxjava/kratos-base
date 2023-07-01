@@ -6,9 +6,9 @@ import (
 	"kratos-base/app/user/service/internal/mocks/mbiz"
 	"kratos-base/app/user/service/internal/service"
 
-	"github.com/golang/mock/gomock"
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
+	"go.uber.org/mock/gomock"
 )
 
 var _ = Describe("UserService", func() {

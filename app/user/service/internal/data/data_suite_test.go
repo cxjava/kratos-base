@@ -8,9 +8,9 @@ import (
 	"testing"
 
 	"github.com/go-kratos/kratos/v2/log"
-	"github.com/golang/mock/gomock"
 	. "github.com/onsi/ginkgo/v2"
 	. "github.com/onsi/gomega"
+	"go.uber.org/mock/gomock"
 )
 
 // 测试 data 方法
@@ -21,6 +21,7 @@ func TestData(t *testing.T) {
 	// 通知 Ginkgo 启动测试套件。如果您的任何 specs 失败，Ginkgo 将自动使 testing.T 失败。
 	RunSpecs(t, "biz data test user")
 }
+
 var cleaner func()      // 定义删除 pg 容器的回调函数
 var Db *data.Data       // 用于测试的 data
 var ctx context.Context // 上下文
@@ -39,7 +40,7 @@ var _ = BeforeSuite(func() {
 	con, f := DockerPostgreSQL()
 	cleaner = func() {
 		ctl.Finish() // clear ctl
-		f() // 测试完成，关闭容器的回调方法
+		f()          // 测试完成，关闭容器的回调方法
 	}
 	config := &conf.Data{Database: &conf.Data_Database{Driver: "postgres", Source: con}}
 	db, _ := data.NewEntClient(config, log.DefaultLogger)
