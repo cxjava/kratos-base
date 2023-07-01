@@ -34,7 +34,7 @@ init:
 	go install github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 	go install github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-openapiv2@latest
 	go install github.com/envoyproxy/protoc-gen-validate@latest
-	go install github.com/golang/mock/mockgen@latest
+	go install go.uber.org/mock/mockgen@latest
 
 .PHONY: wire
 wire:
@@ -128,7 +128,7 @@ lint:
 generate:
 	go mod tidy
 	go get github.com/google/wire/cmd/wire@latest
-	go get github.com/golang/mock/mockgen@latest
+	go get go.uber.org/mock/mockgen@latest
 	go generate ./...
 
 .PHONY: all
